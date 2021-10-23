@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(loganporter.net www.loganporter.net)
+domains=(loganporter.net www.loganporter.net jellyfin.loganporter.net)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="logangporter@gmail.com" # Adding a valid address is strongly recommended
