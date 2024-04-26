@@ -11,6 +11,27 @@ setup with nginx.
 This is useful when you need to set up nginx as a reverse proxy for an
 application.
 
+Before running the script the NGINX conf need to be changed to host the temp keys.
+Change all the `*.conf` files to the following format
+
+```
+server {
+    listen 80;
+    server_name <FULL DOMAIN HERE>;
+    server_tokens off;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+```
+
+replacing `<FULL DOMAIN HERE>` to `loganporter.net` or `sso.loganporter.net` etc.
+
 ## Installation
 
 1. [Install docker-compose](https://docs.docker.com/compose/install/#install-compose).
