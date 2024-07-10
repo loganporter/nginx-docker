@@ -38,11 +38,15 @@ Then use the following steps
 dcs down
 
 # Delete the old certs
-rm -rf ./data/certbot
+cd data
+sudo rm -rf ./certbot
 
 # setup the new certs
+cd ..
 ./init-letsencrypt.sh
 ```
+
+The revert the `.conf` files to their original config and restart the containers with `dcs stop` and `dcs up -d`.
 
 ## Installation
 
