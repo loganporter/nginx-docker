@@ -32,6 +32,18 @@ server {
 
 replacing `<FULL DOMAIN HERE>` to `loganporter.net` or `sso.loganporter.net` etc.
 
+Then use the following steps
+```bash
+# Remove the current containers
+dcs down
+
+# Delete the old certs
+rm -rf ./data/certbot
+
+# setup the new certs
+./init-letsencrypt.sh
+```
+
 ## Installation
 
 1. [Install docker-compose](https://docs.docker.com/compose/install/#install-compose).
