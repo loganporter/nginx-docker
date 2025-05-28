@@ -11,6 +11,8 @@ setup with nginx.
 This is useful when you need to set up nginx as a reverse proxy for an
 application.
 
+## Prerequisites
+
 Before running the script the NGINX conf need to be changed to host the temp keys.
 Change all the `*.conf` files to the following format
 
@@ -32,8 +34,14 @@ server {
 
 replacing `<FULL DOMAIN HERE>` to `loganporter.net` or `sso.loganporter.net` etc.
 
+## Guide to update the certs
+
 Then use the following steps
 ```bash
+# Copy the current configuration files to a backup
+cp data/nginx/*.conf nginx_bkp/
+cp renewalConfig/* data/nginx/
+
 # Remove the current containers
 dcs down
 
