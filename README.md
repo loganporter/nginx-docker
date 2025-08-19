@@ -39,8 +39,9 @@ replacing `<FULL DOMAIN HERE>` to `loganporter.net` or `sso.loganporter.net` etc
 Then use the following steps
 ```bash
 # Copy the current configuration files to a backup
-cp data/nginx/*.conf nginx_bkp/
-cp renewalConfig/* data/nginx/
+cp ./data/nginx/*.conf ./nginx_bkp/
+rm ./data/nginx/*.conf
+cp ./renewalConfig/* ./data/nginx/
 
 # Remove the current containers
 dcs down
@@ -55,6 +56,16 @@ cd ..
 ```
 
 The revert the `.conf` files to their original config and restart the containers with `dcs stop` and `dcs up -d`.
+
+```bash
+# Revert the nginx conf files
+rm ./data/nginx/*.conf
+cp ./nginx_bkp/*.conf ./data/nginx/
+# Remove the backup
+rm -rf ./nginx_bkp
+
+dcs up -d
+```
 
 ## Installation
 
